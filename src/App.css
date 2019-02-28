@@ -1,0 +1,266 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+ /* Bordered form */
+ form {
+  border: 9px solid #f1f1f1;
+  align-content: center;
+  padding-left: 50px;
+  padding-right: 90px;
+  padding-bottom: 30px;
+  background-color:	rgb(248, 213, 184); 	
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  /* border: 1px solid #ccc; */
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: "30px"
+}
+
+/* Set a style for all buttons */
+.button {
+  background-color: darkkhaki;
+  color: white;
+  padding: 14px 20px;
+  margin: 9px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.longButton {
+  background-color: chocolate;
+  color: white;
+  padding: 14px 20px;
+  margin: 9px auto;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  box-align: center;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+  width: 100%;
+  padding: 14px 20px;
+  background-color: #f44336;
+  margin: 9px auto;
+  border: none;
+  cursor: pointer;
+  box-align: center;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  padding-top: 15px
+}
+.sender-div{
+  margin-left: 630px;
+  background-color: aliceblue;
+  border-radius: 20px;
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 8px
+}
+.receiver-div{
+  background-color: aliceblue;
+  border-radius: 20px;
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 8px
+}
+
+#chatTextField{
+  width: 750px;
+  height: 300px;
+  margin-top: 0px;
+  margin-right: 194px;
+}
+#chatSendButton{
+  width: 150px;
+  height: 44px;
+  margin-top: 8px;
+  margin-right: 100px;
+  margin-left: 20px;
+  font-size: 18px;
+  font-family: bold;
+  color: #f1f1f1;
+  border-radius: 4px;
+  background-color: #4CAF50;
+}
+#logoutButton{
+  width:125px;
+  margin-left: 47px;
+  height: 43px;
+  margin-top: 0px;
+  background-color: #4CAF50;
+  font-size: 18px;
+  font-family: bold;
+  color: #f1f1f1;
+}
+
+.a { text-decoration: none }
+
+
+#senderDiv{
+  border: "5px solid";
+  border-color:  #070707;
+  width: "1000px";
+  height: "300px";
+  margin-Left: "162px";
+  margin-Top: "0px";
+}
+
+.div{
+width: 80%;
+padding: 12px 20px;
+padding-left: 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+padding-left: 1px;
+}
+
+
+#appbar {
+  background-color: white;
+  box-shadow: 0 0;
+  border-bottom: 1px solid lightgray;
+  }
+  #appBarMenuAndTitle {
+  display: flex;
+  line-height: 1;
+  /* justify-content: space-between */
+  /* padding-top: 7px; */
+  }
+  #appBarMenuAndTitle1 {
+    display: flex;
+    /* border: blue solid 1px; */
+    height: 50px; 
+    margin: -20px;
+    }
+  #menu {
+  color: gray
+  }
+  .title {
+  margin-left: 30px;
+  margin-right: 38px;
+  padding-top: 15px;
+  color: gray;
+  line-height: 1;
+  font-size: larger;
+  }
+  #appBarIcons {
+  display: flex;
+  line-height: 3
+  }
+  #searchBar {
+  background-color: none;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0);
+  width: 600px;
+  display: flex;
+  position: relative;
+  }
+  #searchInputBase {
+  width: 550px;
+  padding: 0px 0px 0px 70px;
+  display: flex;
+  outline: none;
+  background: transparent;
+  height: 40px;
+  border:none;
+  box-sizing: border-box;
+  }
+
+  #keepImage {
+    display: flex;
+    width: 25px;
+    height: 40px;
+    padding-top: 5px;
+  }
+  
+#signOutMenuItem {
+  border:black solid 1px;
+  background-color: rgba(0,0,0,.2);
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 2px 10px 1px 12px;
+  height: 20px;
+  box-shadow: inset 1px 1px 0 rgba(0,0,0,.1), inset 0 -1px 0 rgba(0,0,0,.07)
+}
+
+#signOutMenu {
+  display: flex; 
+  padding: 4px;
+  height: 50px;
+  justify-content: space-between;
+  background-color: rgba(0,0,0,.2);
+}
+
+#accountCircle {
+  width: 140px; 
+  height: 110px; 
+  margin: 10px 0px
+}
+
+#PaperDiv1 {
+  height: 140px;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-color: rgba(0,0,0,.2);
+  display: flex
+}
