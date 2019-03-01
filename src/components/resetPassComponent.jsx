@@ -1,36 +1,48 @@
 import React, { Component } from "react";
-import {withRouter} from "react-router-dom"
-import { ToastContainer, toast } from "react-toastify"
+import { ToastContainer, toast } from "react-toastify";
+import PropTypes from "prop-types";
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
 import "react-toastify/dist/ReactToastify.css"
 import { Button } from "@material-ui/core";
-import { resetPassword }  from "../services/userService";
-class ForgotPassComponent extends Component 
-{
+import { resetPassword } from "../services/userService";
+
+const styles = theme => ({
+    container: {
+        minHeight: "400px",
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+    },
+});
+
+class ForgotPassComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
             password: '',
             newpassword: '',
-            toast : false
-        } 
+            toast: false
+        }
     }
-    handlepasswordChange = (event) => {
-        const password = event.target.value
-        this.setState({ password: password })
+    handlepasswordChange = password => (event) => {
+        this.setState({ [password]: event.target.value })
     }
 
-    handlenewpasswordChange = (event) => {
-        const newpassword = event.target.value
-        this.setState({ newpassword: newpassword })
+    handlenewpasswordChange = newpassword => (event) => {
+        this.setState({ [newpassword]: event.target.value })
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
         if (this.state.password === "") {
-            toast("Password cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
+            toast("Password cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
         }
         else if (this.state.newpassword === "") {
-            toast("Confirm Password cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
+            toast("Confirm Password cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
         }
         else if (this.state.password.length < 8) {
             toast("Password must be of atleast 8 characters long", { position: toast.POSITION.BOTTOM_CENTER });
@@ -41,45 +53,55 @@ class ForgotPassComponent extends Component
         else if (this.state.password !== this.state.newpassword) {
             toast("Password and Confirm password must be same", { position: toast.POSITION.BOTTOM_CENTER });
         }
-        else 
-        {
+        else {
             event.preventDefault();
-            let current_url = window.location.pathname;
-            let verify_user_token = current_url.substr(15)
-            console.log('49--resetpassComponent--Current url is--:',current_url);
-            console.log('50--resetpassComponent--Token is--:',verify_user_token);
+            let current_url = window.location.href;
+            let verify_user_token = current_url.substr(39)
+            console.log('49--resetpassComponent--Current url is--:', current_url);
+            console.log('50--resetpassComponent--Token is--:', verify_user_token);
             resetPassword(this.state.password, verify_user_token);
         }
     }
-   
+
     render() {
+        const { classes } = this.props;
         return (
             <div>
-                <div>
-                    <label><b>New Password</b></label>
-                    <input type="password" placeholder="Enter new password" name="password" value={this.state.password} onChange={this.handlepasswordChange} style={{marginBottom:"20px"}}/>                     
-                    <label><b>Confirm New Password</b></label>                    
-                    <input type="password" placeholder="Confirm new password" name="newpassword" value={this.state.newpassword} onChange={this.handlenewpasswordChange} style={{marginBottom:"20px"}}/>                      
-                    <div style={{paddingTop:"10px"}}> 
-                    <Button style=
-                    {{
-                        backgroundColor:"darkgreen",
-                        color: "white",
-                        padding: "10px 20px",
-                        margin: "9px auto",
-                        border: "none",
-                        cursor: "pointer",
-                        width: "100%",
-                        boxAlign: "center"
-                    }} type="submit" onClick={this.handleSubmit}>
-                    <b>Update Password</b>
-                     </Button>
-                    </div>
-                </div> 
-                <ToastContainer/>                              
+                <TextField
+                    style={{ width: "92%" }}
+                    label="Password"
+                    className={classes.textField}
+                    value={this.state.password}
+                    onChange={this.handlepasswordChange('password')}
+                    type="password"
+                    name="password"
+                    autoComplete="current-password"
+                    margin="normal"
+                    variant="outlined"
+                />
+                <TextField
+                    style={{ width: "92%" }}
+                    label="Confirm Password"
+                    className={classes.textField}
+                    value={this.state.newpassword}
+                    onChange={this.handlenewpasswordChange('newpassword')}
+                    type="password"
+                    name="newpassword"
+                    autoComplete="current-password"
+                    margin="normal"
+                    variant="outlined"
+                />
+                <Button id="SendLink" type="submit" onClick={this.handleSubmit}>
+                    <b>Submit</b>
+                </Button>
+                <ToastContainer />
             </div>
         )
-    } 
+    }
 }
 
-export default withRouter(ForgotPassComponent);
+ForgotPassComponent.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(ForgotPassComponent);

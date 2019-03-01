@@ -45,120 +45,34 @@
 /* Full-width inputs */
 input[type=text], input[type=password] {
   width: 100%;
-  padding: 12px 20px;
+  height: 35px;
+  padding: 10px 10px;
   margin: 8px 0;
   display: inline-block;
-  /* border: 1px solid #ccc; */
   box-sizing: border-box;
 }
 
-.container {
-  height: 100%;
+#email_input {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: "30px"
+  height: 35px;
+  padding: 10px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
-.button {
-  background-color: darkkhaki;
-  color: white;
-  padding: 14px 20px;
-  margin: 9px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-.longButton {
-  background-color: chocolate;
-  color: white;
-  padding: 14px 20px;
-  margin: 9px auto;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  box-align: center;
+#email_input1 {
+  height: 35px;
+  padding: 10px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 207%;
 }
 
 /* Add a hover effect for buttons */
 button:hover {
   opacity: 0.8;
-}
-
-/* Extra style for the cancel button (red) */
-.cancelbtn {
-  width: 100%;
-  padding: 14px 20px;
-  background-color: #f44336;
-  margin: 9px auto;
-  border: none;
-  cursor: pointer;
-  box-align: center;
-}
-
-/* Add padding to containers */
-.container {
-  padding: 16px;
-  padding-top: 15px
-}
-.sender-div{
-  margin-left: 630px;
-  background-color: aliceblue;
-  border-radius: 20px;
-  width: 300px;
-  padding: 10px;
-  margin-bottom: 8px
-}
-.receiver-div{
-  background-color: aliceblue;
-  border-radius: 20px;
-  width: 300px;
-  padding: 10px;
-  margin-bottom: 8px
-}
-
-#chatTextField{
-  width: 750px;
-  height: 300px;
-  margin-top: 0px;
-  margin-right: 194px;
-}
-#chatSendButton{
-  width: 150px;
-  height: 44px;
-  margin-top: 8px;
-  margin-right: 100px;
-  margin-left: 20px;
-  font-size: 18px;
-  font-family: bold;
-  color: #f1f1f1;
-  border-radius: 4px;
-  background-color: #4CAF50;
-}
-#logoutButton{
-  width:125px;
-  margin-left: 47px;
-  height: 43px;
-  margin-top: 0px;
-  background-color: #4CAF50;
-  font-size: 18px;
-  font-family: bold;
-  color: #f1f1f1;
-}
-
-.a { text-decoration: none }
-
-
-#senderDiv{
-  border: "5px solid";
-  border-color:  #070707;
-  width: "1000px";
-  height: "300px";
-  margin-Left: "162px";
-  margin-Top: "0px";
 }
 
 .div{
@@ -172,6 +86,13 @@ box-sizing: border-box;
 padding-left: 1px;
 }
 
+#headerDiv {
+  width: 500px; 
+  margin: 70px auto; 
+  border: 1px solid black;
+  padding: 20px 15px 25px 35px; 
+  background-color: white;
+}
 
 #appbar {
   background-color: white;
@@ -181,12 +102,9 @@ padding-left: 1px;
   #appBarMenuAndTitle {
   display: flex;
   line-height: 1;
-  /* justify-content: space-between */
-  /* padding-top: 7px; */
   }
   #appBarMenuAndTitle1 {
     display: flex;
-    /* border: blue solid 1px; */
     height: 50px; 
     margin: -20px;
     }
@@ -263,4 +181,64 @@ padding-left: 1px;
   border: 1px solid #ccc;
   border-color: rgba(0,0,0,.2);
   display: flex
+}
+
+
+#SignIn {
+  background-color: #4d90fe;
+  color: white;
+  padding: 10px;
+  margin: 9px auto;
+  border: none;
+  cursor: pointer;
+  width: 80%;
+  margin-left: 35px;
+}
+
+#Register {
+  background-color: #4d90fe;
+  color: white;
+  padding: 10px;
+  margin: 9px auto;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  margin-left: 50%;
+  margin-top: -12px;
+}
+
+#SendLink {
+  background-color: #4d90fe;
+  color: white;
+  padding: 10px;
+  margin: 9px auto;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  margin-left: 61%;
+  margin-top: 20px;
+}
+
+#Signin_buttonDiv {
+  display: flex; 
+  width: 100%;
+  height: 40px;
+  padding: 20px 0px 25px;
+  margin-left: -15px;
+  justify-content: space-evenly;
+}
+
+#link {
+  text-decoration-line: none;
+  color: blue
+}
+
+#h2 {
+  color: green;
+}
+
+#message {
+  margin-top: 0px;
+  padding-left: 10px;
+  color: darkgray;
 }

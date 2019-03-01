@@ -3,16 +3,14 @@ import VerifyEmailComponent from "../components/verifyemailComponent";
 class EmailVerfication extends Component {
     render() {
         return (
-            <div style={{ width: "700px", margin: "70px auto", border: "1px solid black", padding: "30px", paddingTop: "10px", backgroundColor: "floralwhite" }}>
-                <div style={{ textAlign: "center", color: "green" }}>
-                    <h1><b>Email Verfication is in Progress !!!</b></h1>
+            <div id="headerDiv">
+                <div style={{ textAlign: "center" }}>
+                    <h1><b>FUNDOO</b></h1>
+                    <h2 id="h2"><b>Email Verfication is in Progress !!!</b></h2>
                 </div>
-                <div>
-                    <VerifyEmailComponent />
-                </div>
+                <VerifyEmailComponent />
             </div>
         );
-
     }
 }
 export default EmailVerfication;

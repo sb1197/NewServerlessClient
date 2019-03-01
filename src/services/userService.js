@@ -17,9 +17,6 @@ function userRegister(fname, lname, username, password) {
         })
         .then(function (response) {
             console.log("response after register", response.data);
-            // const token1 = response.data;
-            // const token2 = token1.substring(34)
-            // localStorage.setItem('verifyToken', token2);
             alert('Please check email to verify your email !!!');  
         })
         .catch(function (err) {
@@ -32,12 +29,14 @@ function userRegister(fname, lname, username, password) {
  * @param {*} token It is the token taken from url when user click on the email verification link
  * @description This method is to verify user email after registration is done.
  */
-function checkToken(token) {
+function verifyEmail(token) {
     console.log('63--inside check token---',token);
-    axios.post("https://4pnr7j9868.execute-api.us-west-2.amazonaws.com/serverless/users/verifyEmail?id","",{ headers: {
+    axios.post(`https://4pnr7j9868.execute-api.us-west-2.amazonaws.com/serverless/users/verifyEmail/${token}`,"",{ 
+        headers: {
         'x-auth-token': token
     }})
         .then(function (response) {
+            console.log('Response====',response);
             alert('User verified successfully');
             window.location.href = '/login'
         })
@@ -76,15 +75,12 @@ function userLogin(username, password) {
  *              to the verified user only
  */
 function forgetPassword(username) {
-    axios.post('/verifyUser',
+    axios.post('https://4pnr7j9868.execute-api.us-west-2.amazonaws.com/serverless/users/forgetPassword',
     {
-        'email': username,
+        userEmail : username,
     })
     .then(function (response) {
-        // console.log('53--Inside forgetPassword response is--',response.data);
-        // const token1 = response.data;
-        // const token2 = token1.substring(34)
-        // localStorage.setItem('verifyUserToken', token2);
+        console.log('53--Inside forgetPassword response is--',response);
         alert('Password change link is send to valid email plz check..')
     })
     .catch(function (err) {
@@ -100,12 +96,12 @@ function forgetPassword(username) {
 function resetPassword(password,token) {
     console.log('83--inside reset paswd password--',password);
     console.log('84--inside reset paswd token--',token);
-    
-    axios.post(`/resetpassword/${token}`,{'password': password},{
-     headers: {
-        'token': token
-    }})
+    axios.post(`https://4pnr7j9868.execute-api.us-west-2.amazonaws.com/serverless/users/resetPassword/${token}`,
+    {
+        userPassword : password
+    })
     .then(function (response) {
+        console.log('53--Inside resetPassword response is--',response);
         alert('Password changed successfully');
             window.location.href = '/login'
     })
@@ -115,4 +111,4 @@ function resetPassword(password,token) {
     });
 }
 
-export { userRegister, userLogin, forgetPassword, checkToken, resetPassword }
+export { userRegister, userLogin, forgetPassword, verifyEmail, resetPassword }

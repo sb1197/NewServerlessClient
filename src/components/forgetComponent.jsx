@@ -1,65 +1,81 @@
 import React, { Component } from "react";
-import {withRouter} from "react-router-dom"
-import { ToastContainer, toast } from "react-toastify"
+import { ToastContainer, toast } from "react-toastify";
+import PropTypes from "prop-types";
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
 import "react-toastify/dist/ReactToastify.css"
 import { Button } from "@material-ui/core";
-import { forgetPassword }  from "../services/userService";
-class ForgotPassComponent extends Component 
-{
+import { forgetPassword } from "../services/userService";
+
+const styles = theme => ({
+    container: {
+        minHeight: "400px",
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+    },
+});
+
+class ForgotPassComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
             username: '',
-            toast : false
-        } 
+            toast: false
+        }
     }
-    handleusernameChange = (event) => {
-        const username = event.target.value
-        this.setState({ username: username })
+    handleusernameChange = username => (event) => {
+        this.setState({ [username]: event.target.value })
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
         if (this.state.username === "") {
-            toast("Username cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
+            toast("Username cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
         }
         else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.username)) {
-            toast("Invalid username",{position: toast.POSITION.BOTTOM_CENTER});
+            toast("Invalid username", { position: toast.POSITION.BOTTOM_CENTER });
         }
-        else 
-        {
+        else {
             // console.log('31--in component--username is:',this.state.username);
             forgetPassword(this.state.username);
         }
     }
-   
+
     render() {
-    
+        const { classes } = this.props;
         return (
             <div>
                 <div>
-                    <label><b>Username</b></label>
-                    <input type="text" placeholder="Enter useremail" name="username" value={this.state.username} onChange={this.handleusernameChange} style={{marginBottom:"20px"}}/>                     
-                    <div style={{paddingTop:"10px"}}> 
-                    <Button style=
-                    {{
-                        backgroundColor:"darkgreen",
-                        color: "white",
-                        padding: "10px 20px",
-                        margin: "9px auto",
-                        border: "none",
-                        cursor: "pointer",
-                        width: "100%",
-                        boxAlign: "center"
-                    }} type="submit" onClick={this.handleSubmit}>
-                    <b>Send Link</b>
-                     </Button>
-                    </div>
-                </div> 
-                <ToastContainer/>                              
+                    <TextField
+                        style = {{
+                            width: "90%",
+                        }}
+                        label="Email"
+                        className={classes.textField}
+                        value={this.state.username}
+                        onChange={this.handleusernameChange('username')}
+                        type="email"
+                        name="username"
+                        autoComplete="email"
+                        margin="normal"
+                        variant="outlined"
+                    />
+                    <Button id="SendLink" type="submit" onClick={this.handleSubmit}>
+                        <b>Send Link</b>
+                    </Button>
+                </div>
+                <ToastContainer />
             </div>
         )
-    } 
+    }
 }
 
-export default withRouter(ForgotPassComponent);
+ForgotPassComponent.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(ForgotPassComponent);
